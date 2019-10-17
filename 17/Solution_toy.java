@@ -6,36 +6,52 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.regex.*;
 
-public class Solution {
+public class Solution_toy {
 
-	/*
-	* Лука и Фекла очень счастливы после рождения первого ребенка. 
-	* Их сын любит игрушки, поэтому Лука хочет прикупить чего-то. 
-	* Перед ним лежит ряд различных игрушек с ценами. У Луки есть только 
-	* определенная сумма, и он хочет максимизировать количество игрушек, 
- 	* которые он покупает на эти деньги. Учитывая список цен и сумму, 
-	* которую можно потратить, какое максимальное количество игрушек можно купить?
-	*
-	* k - бюджет
-	* 1 <= k <= 10e9
-	* 1 <= n <= 10e5, n - количество цен игрушек
-	* 1 <= prices[i] <= 10e9
-	*
-	* Пример: 7 50
-	*         1 12 5 111 200 1000 10
-	* Ответ: 4
-	*/
+    /*
+     * Р›СѓРєР° Рё Р¤РµРєР»Р° РѕС‡РµРЅСЊ СЃС‡Р°СЃС‚Р»РёРІС‹ РїРѕСЃР»Рµ СЂРѕР¶РґРµРЅРёСЏ РїРµСЂРІРѕРіРѕ СЂРµР±РµРЅРєР°.
+     * РС… СЃС‹РЅ Р»СЋР±РёС‚ РёРіСЂСѓС€РєРё, РїРѕСЌС‚РѕРјСѓ Р›СѓРєР° С…РѕС‡РµС‚ РїСЂРёРєСѓРїРёС‚СЊ С‡РµРіРѕ-С‚Рѕ.
+     * РџРµСЂРµРґ РЅРёРј Р»РµР¶РёС‚ СЂСЏРґ СЂР°Р·Р»РёС‡РЅС‹С… РёРіСЂСѓС€РµРє СЃ С†РµРЅР°РјРё. РЈ Р›СѓРєРё РµСЃС‚СЊ С‚РѕР»СЊРєРѕ
+     * РѕРїСЂРµРґРµР»РµРЅРЅР°СЏ СЃСѓРјРјР°, Рё РѕРЅ С…РѕС‡РµС‚ РјР°РєСЃРёРјРёР·РёСЂРѕРІР°С‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ РёРіСЂСѓС€РµРє,
+     * РєРѕС‚РѕСЂС‹Рµ РѕРЅ РїРѕРєСѓРїР°РµС‚ РЅР° СЌС‚Рё РґРµРЅСЊРіРё. РЈС‡РёС‚С‹РІР°СЏ СЃРїРёСЃРѕРє С†РµРЅ Рё СЃСѓРјРјСѓ,
+     * РєРѕС‚РѕСЂСѓСЋ РјРѕР¶РЅРѕ РїРѕС‚СЂР°С‚РёС‚СЊ, РєР°РєРѕРµ РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РёРіСЂСѓС€РµРє РјРѕР¶РЅРѕ РєСѓРїРёС‚СЊ?
+     *
+     * k - Р±СЋРґР¶РµС‚
+     * 1 <= k <= 10e9
+     * 1 <= n <= 10e5, n - РєРѕР»РёС‡РµСЃС‚РІРѕ С†РµРЅ РёРіСЂСѓС€РµРє
+     * 1 <= prices[i] <= 10e9
+     *
+     * РџСЂРёРјРµСЂ: 7 50
+     *         1 12 5 111 200 1000 10
+     * РћС‚РІРµС‚: 4
+     */
 
     static int maximumToys(int[] p, int k) {
+        int c = 0, sum = 0, N = 0;
+        N = p.length;
+        Arrays.sort(p);
 
-    // Complete the maximumToys function below.
-  
- }
+        for (int i=0;i< N;i++)
+            {
+
+            if(sum+p[i]<=k)
+            {
+                sum = sum+ p[i];
+                c++;
+
+            }
+
+        }
+        return c;
+
+
+    }
+
 
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+    //    BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
         String[] nk = scanner.nextLine().split(" ");
 
@@ -54,12 +70,14 @@ public class Solution {
         }
 
         int result = maximumToys(prices, k);
-
+/*
         bufferedWriter.write(String.valueOf(result));
         bufferedWriter.newLine();
 
         bufferedWriter.close();
+*/
 
+        System.out.println(result);
         scanner.close();
     }
 }
