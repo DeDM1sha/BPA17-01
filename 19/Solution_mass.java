@@ -55,28 +55,64 @@ public class Main {
 
     // Complete the lilysHomework function below.
     static int lilysHomework(int[] arr) {
-        int Count = 0;
+        
+        int Count_1 = 0; // кол-во перестановок сортировки по возрастанию
+        int Count_2 = 0; // кол-во перестановок сортировки по убыванию
+        
+        int[] Array_1 = new int [arr.length];
+        int[] Array_2 = new int [arr.length];
 
-            for (int i = 1; i < arr.length; i++) {
+            for (int i = 0; i < arr.length; i++) {
 
-                if (arr[i] < arr[i - 1])
-                    Count++;
-
-                for (int j = i; j > 0 && arr[j-1]>arr[j];j--) {
-
-                    int tmp=arr[j-1];
-                    arr[j-1]=arr[j];
-                    arr[j]=tmp;
-
-                }
+                Array_1[i] = arr[i];
+                Array_2[i] = arr[i];
 
             }
 
-            System.out.println ("\nПолучившийся массив: ");
+            for (int i = 1; i < Array_1.length; i++) {
 
-                for (int i = 0; i < arr.length; i++)
-                    System.out.print (arr[i] + " ");
-        return Count;
+                if (Array_1[i] < Array_1[i - 1])
+                    Count_1++;
+
+                for (int j = i; j > 0 && Array_1[j-1] > Array_1[j];j--) {
+
+                    int tmp=Array_1[j-1];
+                    Array_1[j-1]=Array_1[j];
+                    Array_1[j]=tmp;
+
+                }
+
+            } // сортировка по возрастанию
+
+           /* System.out.println ("\nПолучившийся массив (по возрастанию): ");
+
+                for (int i = 0; i < Array_1.length; i++)
+                    System.out.print (Array_1[i] + " ");
+                System.out.println();*/
+                
+            for (int i = 1; i < Array_2.length; i++) {
+    
+                if (Array_2[i] > Array_2[i - 1])
+                    Count_2++;
+    
+                for (int j = i; j > 0 && Array_2[j-1] < Array_2[j];j--) {
+    
+                    int tmp=Array_2[j-1];
+                    Array_2[j-1]=Array_2[j];
+                    Array_2[j]=tmp;
+    
+                }
+    
+            } // сортировка по убыванию
+
+        /*System.out.println ("\nПолучившийся массив (по убыванию): ");
+
+        for (int i = 0; i < Array_2.length; i++)
+            System.out.print (Array_2[i] + " ");
+
+        System.out.println ("\nКол-во перестановок по возрастанию: " + Count_1 + "\nКол-во перестановок по убыванию: " + Count_2);*/
+                
+        return Count_1 >= Count_2 ? Count_2 : Count_1;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
@@ -112,4 +148,3 @@ public class Main {
 
 
     }
-}
