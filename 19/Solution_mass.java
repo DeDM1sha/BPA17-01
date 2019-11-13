@@ -1,3 +1,5 @@
+package com.company;
+
 import java.io.*;
 import java.math.*;
 import java.security.*;
@@ -6,43 +8,118 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.regex.*;
 
-public class Solution {
+public class Main {
 
 
- 	/*
-	* Всякий раз, когда Гоша просит Лизу потусоваться, она занята домашним заданием. 
-	* Гоша хочет помочь ей закончить это быстрее. Можете ли вы помочь Гоше понять домашнее 
-	* задание Лизы, чтобы она могла погулять с ним? 
-	* Рассмотрим массив различных целых чисел. Можно менять местами любые два элемента массива 
-	* любое количество раз. Массив "красив", если сумма разностей двух соседних элементов минимальна.
-	* sum(|qrr[i] - arr[i - 1]|) -> min
-	* Определите минимальное количество перестановок, которые должны быть выполнены 
-	* для того, чтобы сделать массив "красивым".
-	*
-	* 1 <= n <= 10e5
-	* 1 <= qrr[i] <= 2*10e9
-	*
-	* Пример: 4
-	*         2 5 3 1
-	* Ответ: 2
-	*        1 <=> 2, 2 <=> 5
-	*
-	* Пример: 3
-	*         2 3 1
-	* Ответ: 1
-	*	 1 <=> 2
-	*/
+    /*
+     * Р’СЃСЏРєРёР№ СЂР°Р·, РєРѕРіРґР° Р“РѕС€Р° РїСЂРѕСЃРёС‚ Р›РёР·Сѓ РїРѕС‚СѓСЃРѕРІР°С‚СЊСЃСЏ, РѕРЅР° Р·Р°РЅСЏС‚Р° РґРѕРјР°С€РЅРёРј Р·Р°РґР°РЅРёРµРј.
+     * Р“РѕС€Р° С…РѕС‡РµС‚ РїРѕРјРѕС‡СЊ РµР№ Р·Р°РєРѕРЅС‡РёС‚СЊ СЌС‚Рѕ Р±С‹СЃС‚СЂРµРµ. РњРѕР¶РµС‚Рµ Р»Рё РІС‹ РїРѕРјРѕС‡СЊ Р“РѕС€Рµ РїРѕРЅСЏС‚СЊ РґРѕРјР°С€РЅРµРµ
+     * Р·Р°РґР°РЅРёРµ Р›РёР·С‹, С‡С‚РѕР±С‹ РѕРЅР° РјРѕРіР»Р° РїРѕРіСѓР»СЏС‚СЊ СЃ РЅРёРј?
+     * Р Р°СЃСЃРјРѕС‚СЂРёРј РјР°СЃСЃРёРІ СЂР°Р·Р»РёС‡РЅС‹С… С†РµР»С‹С… С‡РёСЃРµР». РњРѕР¶РЅРѕ РјРµРЅСЏС‚СЊ РјРµСЃС‚Р°РјРё Р»СЋР±С‹Рµ РґРІР° СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР°
+     * Р»СЋР±РѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЂР°Р·. РњР°СЃСЃРёРІ "РєСЂР°СЃРёРІ", РµСЃР»Рё СЃСѓРјРјР° СЂР°Р·РЅРѕСЃС‚РµР№ РґРІСѓС… СЃРѕСЃРµРґРЅРёС… СЌР»РµРјРµРЅС‚РѕРІ РјРёРЅРёРјР°Р»СЊРЅР°.
+     * sum(|qrr[i] - arr[i - 1]|) -> min
+     * РћРїСЂРµРґРµР»РёС‚Рµ РјРёРЅРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РїРµСЂРµСЃС‚Р°РЅРѕРІРѕРє, РєРѕС‚РѕСЂС‹Рµ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РІС‹РїРѕР»РЅРµРЅС‹
+     * РґР»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ СЃРґРµР»Р°С‚СЊ РјР°СЃСЃРёРІ "РєСЂР°СЃРёРІС‹Рј".
+     *
+     * 1 <= n <= 10e5
+     * 1 <= qrr[i] <= 2*10e9
+     *
+     *
+     * РџСЂРёРјРµСЂ: 4
+     *
+*               2 5 3 1
+     *
+     *      |(2 - 5)| + |(5 - 3)| + |(3 - 1)| = 7
+     *
+     *          1 2 3 5
+     *
+     *      |(1 - 2)| + |(2 - 3)| + |(3 - 5)| = 4
+     *
+     * РћС‚РІРµС‚: 2
+     *        1 <=> 2, 2 <=> 5
+     *
+     * РџСЂРёРјРµСЂ: 3
+     *         2 3 1
+     *
+     *      |(2 - 3)| + |(3 - 1)| = 1 + 2 = 3
+     *
+     *         1 3 2
+     *
+     *      |(1 - 3)| + |(3 - 2)| = 2 + 1 = 3
+     *
+     * РћС‚РІРµС‚: 1
+     *	 1 <=> 2
+     *
+
+     */
 
     // Complete the lilysHomework function below.
     static int lilysHomework(int[] arr) {
+        
+        int Count_1 = 0; // РєРѕР»-РІРѕ РїРµСЂРµСЃС‚Р°РЅРѕРІРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ
+        int Count_2 = 0; // РєРѕР»-РІРѕ РїРµСЂРµСЃС‚Р°РЅРѕРІРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё РїРѕ СѓР±С‹РІР°РЅРёСЋ
+        
+        int[] Array_1 = new int [arr.length];
+        int[] Array_2 = new int [arr.length];
 
+            for (int i = 0; i < arr.length; i++) {
 
+                Array_1[i] = arr[i];
+                Array_2[i] = arr[i];
+
+            }
+
+            for (int i = 1; i < Array_1.length; i++) {
+
+                if (Array_1[i] < Array_1[i - 1])
+                    Count_1++;
+
+                for (int j = i; j > 0 && Array_1[j-1] > Array_1[j];j--) {
+
+                    int tmp=Array_1[j-1];
+                    Array_1[j-1]=Array_1[j];
+                    Array_1[j]=tmp;
+
+                }
+
+            } // СЃРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ
+
+           /* System.out.println ("\nРџРѕР»СѓС‡РёРІС€РёР№СЃСЏ РјР°СЃСЃРёРІ (РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ): ");
+
+                for (int i = 0; i < Array_1.length; i++)
+                    System.out.print (Array_1[i] + " ");
+                System.out.println();*/
+                
+            for (int i = 1; i < Array_2.length; i++) {
+    
+                if (Array_2[i] > Array_2[i - 1])
+                    Count_2++;
+    
+                for (int j = i; j > 0 && Array_2[j-1] < Array_2[j];j--) {
+    
+                    int tmp=Array_2[j-1];
+                    Array_2[j-1]=Array_2[j];
+                    Array_2[j]=tmp;
+    
+                }
+    
+            } // СЃРѕСЂС‚РёСЂРѕРІРєР° РїРѕ СѓР±С‹РІР°РЅРёСЋ
+
+        /*System.out.println ("\nРџРѕР»СѓС‡РёРІС€РёР№СЃСЏ РјР°СЃСЃРёРІ (РїРѕ СѓР±С‹РІР°РЅРёСЋ): ");
+
+        for (int i = 0; i < Array_2.length; i++)
+            System.out.print (Array_2[i] + " ");
+
+        System.out.println ("\nРљРѕР»-РІРѕ РїРµСЂРµСЃС‚Р°РЅРѕРІРѕРє РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ: " + Count_1 + "\nРљРѕР»-РІРѕ РїРµСЂРµСЃС‚Р°РЅРѕРІРѕРє РїРѕ СѓР±С‹РІР°РЅРёСЋ: " + Count_2);*/
+                
+        return Count_1 >= Count_2 ? Count_2 : Count_1;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
         int n = scanner.nextInt();
         scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
@@ -59,11 +136,15 @@ public class Solution {
 
         int result = lilysHomework(arr);
 
-        bufferedWriter.write(String.valueOf(result));
-        bufferedWriter.newLine();
-
-        bufferedWriter.close();
+        System.out.println ("\nРљРѕР»-РІРѕ РїРµСЂРµСЃС‚Р°РЅРѕРІРѕРє: " + result);
 
         scanner.close();
+
+       /* bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedWriter.close();*/
+
+
+
     }
-}
