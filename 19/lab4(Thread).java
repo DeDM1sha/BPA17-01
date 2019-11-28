@@ -141,7 +141,7 @@ public class Main {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
-        
+
         homeWork HomeWork = new homeWork();
         HomeWork.setCount_1(0);
         HomeWork.setCount_2(0);
@@ -159,18 +159,8 @@ public class Main {
             arr[i] = arrItem;
         }
 
-      
-        Thread myThready = new Thread(new Runnable()
-        {
-            public void run() 
-            {
-                HomeWork.setResult(HomeWork.lilysHomework(arr));
-                int Poboch_Result = HomeWork.getResult();
-                System.out.println ("\nКол-во перестановок (побочный поток): " + Poboch_Result);
-            }
-        });
-        myThready.start();
 
+        new Thread(() -> {HomeWork.setResult(HomeWork.lilysHomework(arr));  System.out.println ("\nКол-во перестановок (побочный поток): " + HomeWork.getResult()); }).start ();
 
         int Osn_result = HomeWork.getResult();
         System.out.println ("\nКол-во перестановок (основной поток): " + Osn_result);
