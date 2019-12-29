@@ -30,7 +30,6 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager" selected="Application.Task4">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.company.Main" />
       <module name="18" />
@@ -66,19 +65,7 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.Main" />
-      <item itemvalue="Application.Main2" />
-      <item itemvalue="Application.Task4" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Task4" />
-        <item itemvalue="Application.Main2" />
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
+  </configuration>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -102,7 +89,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575518345601</updated>
-      <workItem from="1575518348929" duration="1940000" />
+      <workItem from="1575518348929" duration="2699000" />
+      <workItem from="1576730745956" duration="1145000" />
+      <workItem from="1577207041621" duration="2074000" />
+      <workItem from="1577591683015" duration="144000" />
     </task>
     <servers />
   </component>
@@ -110,33 +100,5 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1397" height="405" key="GridCell.Tab.0.bottom" timestamp="1576488107053">
-      <screen x="0" y="0" width="1440" height="870" />
-    </state>
-    <state width="1323" height="237" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1575520079304" />
-    <state width="1397" height="405" key="GridCell.Tab.0.bottom/0.0.1440.870@0.0.1440.870" timestamp="1576488107053" />
-    <state width="1397" height="405" key="GridCell.Tab.0.center" timestamp="1576488107053">
-      <screen x="0" y="0" width="1440" height="870" />
-    </state>
-    <state width="1323" height="237" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1575520079304" />
-    <state width="1397" height="405" key="GridCell.Tab.0.center/0.0.1440.870@0.0.1440.870" timestamp="1576488107053" />
-    <state width="1397" height="405" key="GridCell.Tab.0.left" timestamp="1576488107053">
-      <screen x="0" y="0" width="1440" height="870" />
-    </state>
-    <state width="1323" height="237" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1575520079304" />
-    <state width="1397" height="405" key="GridCell.Tab.0.left/0.0.1440.870@0.0.1440.870" timestamp="1576488107053" />
-    <state width="1397" height="405" key="GridCell.Tab.0.right" timestamp="1576488107053">
-      <screen x="0" y="0" width="1440" height="870" />
-    </state>
-    <state width="1323" height="237" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1575520079304" />
-    <state width="1397" height="405" key="GridCell.Tab.0.right/0.0.1440.870@0.0.1440.870" timestamp="1576488107053" />
-    <state x="421" y="257" key="com.intellij.ide.util.TipDialog" timestamp="1576487106796">
-      <screen x="0" y="0" width="1440" height="870" />
-    </state>
-    <state x="421" y="257" key="com.intellij.ide.util.TipDialog/0.0.1440.870@0.0.1440.870" timestamp="1576487106796" />
-    <state x="413" y="134" key="extract.method.dialog" timestamp="1575519508683">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="413" y="134" key="extract.method.dialog/0.0.1366.738@0.0.1366.738" timestamp="1575519508683" />
   </component>
 </project>

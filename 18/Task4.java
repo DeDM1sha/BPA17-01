@@ -3,14 +3,14 @@ package com.company;
 import java.io.*;
 import java.util.Arrays;
 
-class MyClass {
+class HomeWork {
     int n;
     int d;
     int[] expenditure;
     int result = 0;
 
-    public MyClass() throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new FileReader("file1.txt"));
+    public HomeWork() throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("file.txt"));
         String[] nd = bufferedReader.readLine().split(" ");
 
         this.n = Integer.parseInt(nd[0]);
@@ -45,10 +45,12 @@ class MyClass {
     }
 }
 
-public class Main2 {
+public class Task4 {
     public static void main(String[] args) throws IOException {
-        MyClass myObj1 = new MyClass();
-        myObj1.activityNotifications();
-        System.out.println ("Answer: " + myObj1.result);
+        HomeWork myObj1 = new HomeWork();
+        new Thread(()->{myObj1.activityNotifications(); System.out.println ("\nAnswer (побочный поток):"+ myObj1.result);}).start ();
+
+        int Osn_result =  myObj1.result;
+        System.out.println ("\nAnswer (основной поток): " + Osn_result);
     }
 }
