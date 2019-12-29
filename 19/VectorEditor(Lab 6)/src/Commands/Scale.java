@@ -13,7 +13,6 @@ public class Scale extends Command {
 
 	public Scale(List<Figure> figures, String... args) {
 		this.figures = figures;
-		System.out.println(Arrays.asList(args));
 		if (args != null) {
 			if (args.length == 3) {
 				this.figure = getFigure(figures, args[0]);
@@ -33,13 +32,13 @@ public class Scale extends Command {
 	@Override
 	public void undo() {
 		if (figure == null) {
-			String scaleX = -this.scaleX + "";
-			String scaleY = -this.scaleY + "";
+			String scaleX = (1 / this.scaleX) + "";
+			String scaleY = (1 / this.scaleY) + "";
 			for (Figure figure : figures) {
 				new Scale(figures, figure.getSignature(), scaleX, scaleY).execute();
 			}
 		} else {
-			figure.scale(-this.scaleX, -this.scaleY);
+			figure.scale((1 / this.scaleX), (1 / this.scaleY));
 		}
 	}
 
@@ -54,5 +53,10 @@ public class Scale extends Command {
 		} else {
 			figure.scale(this.scaleX, this.scaleY);
 		}
+	}
+
+	@Override
+	public String toString() {
+		return "scale " + figure.getSignature() + " " + scaleX + " " + scaleY;
 	}
 }

@@ -17,8 +17,11 @@ public class Editor {
 		Scanner scanner = new Scanner(new File(filename));
 		while (scanner.hasNextLine()) {
 			String figureSignature = scanner.next();
-			String[] args = scanner.nextLine().trim().split(" ");
-			System.out.println(Arrays.asList(args));
+			System.out.print(figureSignature);
+			String argsStr = scanner.nextLine();
+			System.out.println(argsStr);
+			String[] args = argsStr.trim().split(" ");
+
 			for (Figure figure : figures) {
 				if (figure.getSignature().equals(figureSignature)) {
 					throw new Exception("Element already exist");
@@ -48,10 +51,14 @@ public class Editor {
 		Scanner scanner = new Scanner(new File(filename));
 		while (scanner.hasNextLine()) {
 			String command = scanner.next();
+			System.out.print(command);
 			String[] args = null;
 			try {
-				args = scanner.nextLine().trim().split(" ");
+				String argsStr = scanner.nextLine();
+				System.out.println(argsStr);
+				args = argsStr.trim().split(" ");
 			} catch (NoSuchElementException ignored) {}
+
 
 			switch (command) {
 				case Command.TRANSLATE:
@@ -85,6 +92,7 @@ public class Editor {
 
 			for (Figure figure : figures) {
 				writer.write(figure.toString() + "\n");
+				System.out.println(figure.toString());
 			}
 
 			writer.flush();

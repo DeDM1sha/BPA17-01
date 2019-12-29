@@ -2,7 +2,6 @@ package Commands;
 
 import Figures.Figure;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Translate extends Command {
@@ -53,5 +52,10 @@ public class Translate extends Command {
 		} else {
 			figure.translate(this.translateX, this.translateY);
 		}
+	}
+
+	@Override
+	public String toString() {
+		return "translate " + figure.getSignature() + " " + translateX + " " + translateY;
 	}
 }

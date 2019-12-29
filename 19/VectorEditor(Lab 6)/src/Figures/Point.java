@@ -20,15 +20,15 @@ public class Point {
 	}
 
 	public void rotate(int degree) {
-		this.x = this.x * Math.cos(degree) - this.y * Math.sin(degree);
-		this.y = this.x * Math.sin(degree) + this.y * Math.cos(degree);
+		this.x = this.x * Math.cos(Math.toRadians(degree)) - this.y * Math.sin(Math.toRadians(degree));
+		this.y = this.x * Math.sin(Math.toRadians(degree)) + this.y * Math.cos(Math.toRadians(degree));
 	}
 
-	public double getX() {
-		return x;
+	public int getX() {
+		return (int) Math.round(x);
 	}
 
-	public double getY() {
-		return y;
+	public int getY() {
+		return (int) Math.round(y);
 	}
 }

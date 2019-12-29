@@ -13,7 +13,6 @@ public class Rotate extends Command {
 
 	public Rotate(List<Figure> figures, String... args) {
 		this.figures = figures;
-		System.out.println(Arrays.asList(args));
 		if (args != null) {
 			if (args.length == 2) {
 				this.figure = getFigure(figures, args[0]);
@@ -50,5 +49,10 @@ public class Rotate extends Command {
 		} else {
 			figure.rotate(this.degree);
 		}
+	}
+
+	@Override
+	public String toString() {
+		return "rotate " + degree;
 	}
 }
