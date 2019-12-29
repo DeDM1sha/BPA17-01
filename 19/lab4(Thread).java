@@ -162,6 +162,7 @@ public class Main {
 
         new Thread(() -> {HomeWork.setResult(HomeWork.lilysHomework(arr));  System.out.println ("\nКол-во перестановок (побочный поток): " + HomeWork.getResult()); }).start ();
 
+
         int Osn_result = HomeWork.getResult();
         System.out.println ("\nКол-во перестановок (основной поток): " + Osn_result);
 
